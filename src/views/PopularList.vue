@@ -1,32 +1,41 @@
 <template>
+  <h1>Popular Movie list</h1>
   <div class="popular">
-    <h1>This is Popular Movie list</h1>
+    <div v-for="item in popularList" v-bind:key="item.id">
+        <div>{{ item.title }}</div>
+        <img :src="item.medium_cover_image" />
+    </div>
   </div>
 </template>
 
 <script>
-
-const requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-}
-
-fetch('https://api.themoviedb.org/3/movie/popular?api_key=df3503e42a05975820add8b54b573099&language=en-US&page=1', requestOptions)
-  .then(response => response.json())
-  .then(data => console.log(data.results))
-  .catch(error => console.log('error', error))
 export default {
   name: 'PopularList',
   data () {
     return {
       popularList: []
     }
+  },
+  methods: {
+    getPopularList () {
+      this.axios.get('https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year').then((res) => {
+        console.log(res)
+        this.popularList = res.data.data.movies
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  },
+  mounted () {
+    this.getPopularList()
   }
 }
 </script>
 
 <style>
     .popular {
-        width: 800px; margin: 20px auto;
+        display: flex;
+        flex-flow: row wrap;
+        margin: 100px;
     }
 </style>
