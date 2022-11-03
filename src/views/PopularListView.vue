@@ -44,5 +44,6 @@ export default {
   display: flex;
   flex-flow: row wrap;
   margin: 100px;
+  padding: 0;
 }
 </style>
