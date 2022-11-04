@@ -1,16 +1,21 @@
 <template>
   <h1>Popular Movie list</h1>
-  <div class="popular">
-    <div v-for="item in popularList" v-bind:key="item.id" style="margin: 30px">
-      <div>{{ item.title }}</div>
-      <img :src="item.medium_cover_image" />
+  <div class="container">
+    <div class="popular-item">
+      <div
+        v-for="item in popularList"
+        :key="item.id"
+        :style="{ margin: '30px' }"
+      >
+        <div>{{ item.title }}</div>
+        <img :src="item.medium_cover_image" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
-import { onMounted } from '@vue/runtime-core'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
 export default {
@@ -20,11 +25,12 @@ export default {
 
     const getPopularList = async () => {
       try {
-        popularList.value = await axios.get(
+        const response = await axios.get(
           'https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year'
         )
-        popularList.value = popularList.value.data.data.movies
+        popularList.value = response.data.data.movies
         console.log(popularList.value)
+        console.log(popularList)
       } catch (error) {
         console.log(error)
       }
@@ -40,7 +46,7 @@ export default {
 </script>
 
 <style>
-.popular {
+.popular-item {
   display: flex;
   flex-flow: row wrap;
   margin: 100px;

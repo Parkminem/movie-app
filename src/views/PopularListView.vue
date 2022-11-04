@@ -4,6 +4,7 @@
 
 <script>
 import PopularList from '@/components/PopularList.vue'
+
 export default {
   name: 'PopularLView',
   components: {
