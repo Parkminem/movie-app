@@ -5,11 +5,7 @@ export default createStore({
   state: {
     movieList: []
   },
-  getters: {
-    fetchedAsk(state) {
-      return state.ask
-    }
-  },
+  getters: {},
   mutations: {
     SET_MOVIE_LIST(state, moiveList) {
       state.movieList = moiveList
