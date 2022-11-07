@@ -1,16 +1,16 @@
 <template>
-  <h1>Test Page</h1>
+  <h1>test script setup</h1>
+  {{ props.posts[0] }}
 </template>
 
-<script>
-export default {
-  name: 'TestPage',
-  props: ['posts'],
+<script setup>
+import { defineProps } from 'vue'
 
-  setup(props) {
-    console.log(props.posts)
+const props = defineProps({
+  posts: {
+    type: Object
   }
-}
+})
 </script>
 
 <style></style>
