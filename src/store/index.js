@@ -12,11 +12,11 @@ export default createStore({
     }
   },
   actions: {
-    FETCH_MOVIE_LIST(context) {
+    FETCH_MOVIE_LIST({ commit }) {
       fetchMovieList()
-        .then((response) => {
-          console.log(response.data.data.movies)
-          context.commit('SET_MOVIE_LIST', response.data.data.movies)
+        .then((result) => {
+          commit('SET_MOVIE_LIST', result.data.movies)
+          console.log(result.data.movies)
         })
         .catch((error) => console.log(error))
     }

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TestPageView from '../views/TestPageView.vue'
-import PopularListView from '../views/PopularListView.vue'
+import MovieListView from '../views/MovieListView.vue'
 
 const routes = [
   {
@@ -20,11 +20,11 @@ const routes = [
     component: TestPageView
   },
   {
-    path: '/popular',
-    name: 'popularList',
+    path: '/movieList',
+    name: 'movieList',
     // component: () =>
-    //   import(/* webpackChunkName: "PopularList" */ '../views/PopularListView')
-    component: PopularListView
+    //   import(/* webpackChunkName: "MovieList" */ '../views/MovieListView')
+    component: MovieListView
   }
 ]
 
