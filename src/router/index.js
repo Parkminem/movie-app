@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TestPageView from '../views/TestPageView.vue'
-import MovieListView from '../views/MovieListView.vue'
 
 const routes = [
   {
@@ -18,13 +17,6 @@ const routes = [
     // component: () =>
     //   import(/* webpackChunkName: "test" */ '../views/TestPageView')
     component: TestPageView
-  },
-  {
-    path: '/movieList',
-    name: 'movieList',
-    // component: () =>
-    //   import(/* webpackChunkName: "MovieList" */ '../views/MovieListView')
-    component: MovieListView
   }
 ]
 

@@ -2,7 +2,7 @@
   <h1>Movie list</h1>
   <div class="container">
     <div class="movie-item">
-      <div v-for="movie in store.state.movieList" :key="movie.id">
+      <div v-for="movie in movieList.movies" :key="movie.id">
         <router-link :to="`${movie.id}`">
           <div>{{ movie.title }}</div>
           <img :src="movie.medium_cover_image" />
@@ -14,12 +14,11 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { useStore } from 'vuex'
+import { useMovieListStore } from '@/store/movieList'
 
-const store = useStore()
-
+const movieList = useMovieListStore()
 const getMovieList = () => {
-  store.dispatch('FETCH_MOVIE_LIST')
+  movieList.fetchApi()
 }
 
 onMounted(getMovieList)
