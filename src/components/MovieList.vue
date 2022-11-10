@@ -1,5 +1,4 @@
 <template>
-  <h1>Movie list</h1>
   <div class="container">
     <div class="movie-item">
       <div v-for="movie in movieList.movies" :key="movie.id">
@@ -14,9 +13,9 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { useMovieListStore } from '@/store/movieList'
+import { movieListStore } from '@/store/movieList'
 
-const movieList = useMovieListStore()
+const movieList = movieListStore()
 const getMovieList = () => {
   movieList.fetchApi()
 }

@@ -1,9 +1,11 @@
 <template>
-  <MovieList />
+  <MainHeadline />
+  <SearchMovie />
 </template>
 
 <script setup>
-import MovieList from '@/components/MovieList.vue'
+import MainHeadline from '../components/main/MainHeadline.vue'
+import SearchMovie from '../components/SearchMovie.vue'
 </script>
 
 <style></style>

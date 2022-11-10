@@ -1,10 +1,11 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/test">Test</router-link>
-  </nav>
-  <router-view />
+  <TheHeader />
+  <RouterView />
 </template>
+
+<script setup>
+import TheHeader from './components/TheHeader.vue'
+</script>
 
 <style lang="scss">
 @import './scss/main';
