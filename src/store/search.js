@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const searchStore = defineStore('search', () => {
+  // const OMDB_API_KEY = '366ae844'
   const searchItem = {
     title: '',
     type: 'movie',

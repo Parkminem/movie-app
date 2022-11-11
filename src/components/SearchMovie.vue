@@ -1,19 +1,21 @@
 <template>
   <div class="container">
     <input
+      v-model="title"
       class="form-control"
       type="text"
       placeholder="Search..."
-      v-model="title"
+      @keyup="apply"
     />
     <div class="selects">
       <select
-        v-for="filter in searchItem.filters"
+        v-for="filter in searchFilters.filters"
+        v-model="searchFilters[filter.name]"
         :key="filter.name"
         class="form-select"
       >
         <option v-if="filter.name === 'year'" value="">All Years</option>
-        <option v-for="item in filter.items" :key="item" value="">
+        <option v-for="item in filter.items" :key="item">
           {{ item }}
         </option>
       </select>
@@ -23,9 +25,33 @@
 </template>
 
 <script setup>
-import { searchStore } from '../store/search'
-
-const searchItem = searchStore().searchItem
+const searchFilters = {
+  title: '',
+  type: 'movie',
+  number: 10,
+  year: '',
+  filters: [
+    {
+      name: 'type',
+      items: ['movie', 'series', 'episode']
+    },
+    {
+      name: 'number',
+      items: [10, 20, 30]
+    },
+    {
+      name: 'year',
+      items: () => {
+        const years = []
+        const thisYear = new Date().getFullYear()
+        for (let i = thisYear; i >= 1985; i--) {
+          years.push(i)
+        }
+        return years
+      }
+    }
+  ]
+}
 </script>
 
 <style lang="scss" scoped>
