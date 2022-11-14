@@ -1,9 +1,5 @@
-<template>
-  <MovieList />
-</template>
+<template></template>
 
-<script setup>
-import MovieList from '@/components/MovieList.vue'
-</script>
+<script setup></script>
 
 <style></style>
