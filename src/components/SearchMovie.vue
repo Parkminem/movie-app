@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <input
-      v-model="title"
+      v-model="searchFilters.title"
       class="form-control"
       type="text"
       placeholder="Search..."
@@ -25,7 +25,10 @@
 </template>
 
 <script setup>
-const searchFilters = {
+import { useSearch } from '@/store/movie'
+import { ref } from 'vue'
+
+const searchFilters = ref({
   title: '',
   type: 'movie',
   number: 10,
@@ -51,6 +54,16 @@ const searchFilters = {
       }
     }
   ]
+})
+
+const apply = () => {
+  useSearch().searchMovies({
+    title: searchFilters.value.title,
+    type: searchFilters.value.type,
+    number: searchFilters.value.number,
+    year: searchFilters.value.year
+  })
+  console.log(useSearch().movies)
 }
 </script>
 
